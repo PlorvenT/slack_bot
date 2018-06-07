@@ -12,7 +12,7 @@ class CommandHelper
     ];
 
     public static $availableCommand = [
-        '!cmd' => 'Available commands: !cmd, !question, !answer',
+        '!cmd' => 'Available commands: !cmd, !question',
         '!question' => 'Programmer noob and did nor write code for this',
     ];
 
