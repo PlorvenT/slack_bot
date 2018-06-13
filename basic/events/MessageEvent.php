@@ -2,6 +2,7 @@
 namespace events;
 
 use commands\AnswerCommand;
+use components\LogComponent;
 use core\BaseCommand;
 use core\BaseEvent;
 use helper\CommandHelper;
@@ -12,6 +13,11 @@ class MessageEvent extends BaseEvent
     {
         if ($this->isBotMessage($values)){
             return;
+        }
+
+        //add to log any data from slack
+        if ($values){
+            LogComponent::add($values);
         }
 
         if (!empty($values) && isset($values['event']['text'])) {
