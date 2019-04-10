@@ -1,8 +1,8 @@
 <?php
 namespace events;
 
+use App;
 use commands\AnswerCommand;
-use components\LogComponent;
 use core\BaseCommand;
 use core\BaseEvent;
 use helper\CommandHelper;
@@ -17,7 +17,7 @@ class MessageEvent extends BaseEvent
 
         //add to log any data from slack
         if ($values){
-            LogComponent::add($values);
+            App::debug($values);
         }
 
         if (!empty($values) && isset($values['event']['text'])) {

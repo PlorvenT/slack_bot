@@ -2,3 +2,4 @@
 .idea
 text.txt
 app.log
+/runtime/*

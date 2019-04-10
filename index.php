@@ -1,8 +1,12 @@
 <?php
+require(__DIR__ . '/basic/App.php');
+require(__DIR__ . '/basic/components/Log/LoggerAwareInterface.php');
+require(__DIR__ . '/basic/components/Log/LoggerInterface.php');
+require(__DIR__ . '/basic/components/Log/LogLevel.php');
+require(__DIR__ . '/basic/components/Log/Logger.php');
 require(__DIR__ . '/core/BaseEvent.php');
 require(__DIR__ . '/core/ICommand.php');
 require(__DIR__ . '/core/BaseCommand.php');
-require(__DIR__ . '/basic/components/LogComponent.php');
 require(__DIR__ . '/basic/components/SlackCurl.php');
 require(__DIR__ . '/basic/commands/CmdCommand.php');
 require(__DIR__ . '/basic/commands/QuestionCommand.php');
@@ -13,6 +17,9 @@ require(__DIR__ . '/basic/helper/CommandHelper.php');
 
 use helper\CommandHelper;
 use core\BaseEvent;
+
+$config = [];
+$application = new App($config);
 
 $json = file_get_contents('php://input');
 $values = json_decode($json, true);
