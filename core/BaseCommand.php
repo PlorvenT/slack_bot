@@ -5,17 +5,36 @@ namespace core;
 use components\SlackCurl;
 use helper\CommandHelper;
 
-class BaseCommand implements ICommand
+/**
+ * Class BaseCommand
+ * @package core
+ */
+abstract class BaseCommand implements ICommand
 {
-    public $slackCurl;
+    /**
+     * @var SlackCurl
+     */
+    protected $slackCurl;
 
-    public function __construct()
+    /**
+     * BaseCommand constructor.
+     * @param SlackCurl $slackCurl
+     */
+    public function __construct(SlackCurl $slackCurl)
     {
-        $this->slackCurl = new SlackCurl();
+        $this->slackCurl = $slackCurl;
     }
 
+    /**
+     * This method run command.
+     *
+     * @param string $textCommand
+     * @return mixed
+     */
     public function run($textCommand)
     {
-        $this->slackCurl->sendCurl(json_encode(["text" => CommandHelper::$availableCommand[$textCommand]]));
+        $this->slackCurl->sendCurl(json_encode(['text' => CommandHelper::$availableCommand[$textCommand]]));
+
+        return;
     }
 }

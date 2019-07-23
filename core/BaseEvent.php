@@ -2,13 +2,19 @@
 
 namespace core;
 
-
+/**
+ * Class BaseEvent
+ * @package core
+ */
 abstract class BaseEvent
 {
+    /**
+     * @var string
+     */
     const TYPE_BOT_MESSAGE = 'bot_message';
 
-    public function process($values)
-    {
-
-    }
+    /**
+     * @param $values
+     */
+    abstract public function process($values);
 }

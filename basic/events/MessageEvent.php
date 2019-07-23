@@ -1,14 +1,23 @@
 <?php
+
 namespace events;
 
 use App;
 use commands\AnswerCommand;
+use components\SlackCurl;
 use core\BaseCommand;
 use core\BaseEvent;
 use helper\CommandHelper;
 
+/**
+ * Class MessageEvent
+ * @package events
+ */
 class MessageEvent extends BaseEvent
 {
+    /**
+     * @param $values
+     */
     public function process($values)
     {
         if ($this->isBotMessage($values)){
@@ -32,7 +41,7 @@ class MessageEvent extends BaseEvent
                 $command = new $commandClassName();
                 $command->run($message);
             } else {
-                $answerCommand = new AnswerCommand();
+                $answerCommand = new AnswerCommand(new SlackCurl());
                 $answerCommand->run($message);
             }
         }

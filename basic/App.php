@@ -5,13 +5,12 @@ use \components\Log\Logger;
 
 class App
 {
-    private static $_logger;
+    private static $logger;
 
     public function __construct($config)
     {
 
     }
-
 
     /**
      * @return string
@@ -42,13 +41,13 @@ class App
      */
     public static function getLogger()
     {
-        if (self::$_logger !== null){
-            return self::$_logger;
+        if (self::$logger !== null){
+            return self::$logger;
         }
 
-        self::$_logger = new Logger();
+        self::$logger = new Logger();
 
-        return self::$_logger;
+        return self::$logger;
     }
 
     /**
@@ -59,6 +58,6 @@ class App
      */
     public static function setLogger(LoggerInterface $logger)
     {
-        self::$_logger = $logger;
+        self::$logger = $logger;
     }
 }

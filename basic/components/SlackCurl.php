@@ -2,30 +2,35 @@
 
 namespace components;
 
-
+/**
+ * Class SlackCurl
+ * @package components
+ */
 class SlackCurl
 {
+    /**
+     * @var string
+     */
     const URL = "https://hooks.slack.com/services/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";
 
-    private $ch;
-
-    public function __construct()
+    /**
+     * @param string $dataString
+     */
+    public function sendCurl($dataString)
     {
-        $this->ch = curl_init();
-    }
+        $ch = curl_init();
 
-    public function sendCurl($data_string)
-    {
-        curl_setopt($this->ch, CURLOPT_URL, self::URL);
-        curl_setopt($this->ch, CURLOPT_POST, 1);
-        curl_setopt($this->ch, CURLOPT_POSTFIELDS, $data_string);
-        curl_setopt($this->ch, CURLOPT_HTTPHEADER, array(
+        curl_setopt($ch, CURLOPT_URL, self::URL);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
                 'Content-Type: application/json',
-                'Content-Length: ' . strlen($data_string))
+                'Content-Length: ' . strlen($dataString))
         );
-        curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-        curl_exec($this->ch);
-        curl_close($this->ch);
+        curl_exec($ch);
+
+        curl_close($ch);
     }
 }

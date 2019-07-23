@@ -8,8 +8,17 @@
 
 namespace core;
 
-
+/**
+ * Interface ICommand
+ * @package core
+ */
 interface ICommand
 {
+    /**
+     * This method run command.
+     *
+     * @param string $textCommand
+     * @return mixed
+     */
     public function run($textCommand);
 }

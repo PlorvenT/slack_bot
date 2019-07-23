@@ -2,11 +2,20 @@
 
 namespace helper;
 
-
+/**
+ * Class QuestionAnswerHelper
+ * @package helper
+ */
 class QuestionAnswerHelper
 {
+    /**
+     * @var string
+     */
     public static $storageFileName = 'text.txt';
 
+    /**
+     * @var array
+     */
     public static $questionList = [
         [
             'question' => '2+2=?',
